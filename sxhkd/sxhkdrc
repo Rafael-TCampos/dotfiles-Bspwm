@@ -1,0 +1,100 @@
+# ────────────────
+# Atalhos gerais (independente do WM)
+# ────────────────
+
+# abrir terminal
+super + Return
+    kitty
+
+# abrir menu Rofi
+super + d
+    rofi -show drun
+
+# recarregar configuração do sxhkd
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# ────────────────
+# Atalhos BSPWM
+# ────────────────
+
+# fechar janela
+super + q
+    bspc node -c
+
+# mover foco entre janelas
+super + Left
+    bspc node -f west
+super + Down
+    bspc node -f south
+super + Up
+    bspc node -f north
+super + Right
+    bspc node -f east
+
+# mover janela entre direções
+super + shift + Left
+    bspc node -s west
+super + shift + Down
+    bspc node -s south
+super + shift + Up
+    bspc node -s north
+super + shift + Right
+    bspc node -s east
+
+# alternar desktops
+# alternar workspaces
+super + 1
+    bspc monitor HDMI-0 -f && bspc desktop ^1 -f
+super + 2
+    bspc monitor HDMI-0 -f && bspc desktop ^2 -f
+super + 3
+    bspc desktop -f ^3
+super + 4
+    bspc desktop -f ^4
+super + 5
+    bspc desktop -f ^5
+super + 6
+    bspc desktop -f ^6
+super + 7
+    bspc desktop -f ^7
+super + 8
+    bspc desktop -f ^8
+super + 9
+    bspc desktop -f ^9
+super + 0
+    bspc desktop -f ^10
+
+# alternar entre monitores
+super + ctrl + h
+    bspc monitor -f prev
+super + ctrl + l
+    bspc monitor -f next
+
+# recarregar BSPWM (como i3 SUPER+Shift+R)
+super + shift + r
+    bspc wm -r
+
+# Captura de tela Flameshot
+super + p
+    flameshot gui
+
+# Atalho para Thunar
+super + t
+      thunar
+
+# Atalho para workspaces
+super + {1-9,0}
+    bspc desktop -f {1-9,10}
+       
+# aumentar volume
+ctrl + Up
+    pamixer -i 5 && notify-send "Volume $(pamixer --get-volume)%"
+
+# diminuir volume
+ctrl + Down
+    pamixer -d 5 && notify-send "Volume $(pamixer --get-volume)%"
+
+# mute
+ctrl + shift + m
+    pamixer -t && notify-send "Mute"

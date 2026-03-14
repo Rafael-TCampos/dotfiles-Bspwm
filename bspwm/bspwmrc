@@ -1,0 +1,32 @@
+#! /bin/sh
+# iniciar os atalhos
+sxhkd &
+
+bspc monitor HDMI-0 -d 6 7 8 9 10
+bspc monitor DVI-0 -d 1 2 3 4 5
+
+bspc config top_padding 0 # altura da Polybar
+bspc config bottom_padding 0
+bspc config left_padding 0
+bspc config right_padding 0
+
+bspc config border_width 2
+bspc config window_gap 12
+
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+
+
+bspc config focused_border_color "#ffffff"
+bspc config normal_border_color "#444444"
+bspc config border_width 2
+
+# configurar monitores
+~/.screenlayout/dualMonitor.sh &
+
+# Picom
+picom --config ~/.config/picom/picom.conf &
+
+# Wallpaper
+~/.fehbg &
