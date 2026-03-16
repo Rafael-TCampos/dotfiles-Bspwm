@@ -42,14 +42,57 @@ super + shift + Up
 super + shift + Right
     bspc node -s east
 
-# Enviar janela para o Desktop no Monitor Principal (HDMI-0)
-super + shift + {1,2,3,4,5}
-    bspc node -d HDMI-0:^{1,2,3,4,5} -f
+# --- MONITOR PRINCIPAL (HDMI-0) ---
 
-# Enviar janela para o Desktop no Monitor Secundário (DVI-0)
-super + shift + {6,7,8,9,0}
-    bspc node -d DVI-0:^{1,2,3,4,5} -f
+# Focar Desktops (Trocar de área)
+super + 1
+    bspc desktop -f HDMI-0:^1
+super + 2
+    bspc desktop -f HDMI-0:^2
+super + 3
+    bspc desktop -f HDMI-0:^3
+super + 4
+    bspc desktop -f HDMI-0:^4
+super + 5
+    bspc desktop -f HDMI-0:^5
 
+# Mover Janelas (Shift + Número)
+super + shift + 1
+    bspc node -d HDMI-0:^1 -f
+super + shift + 2
+    bspc node -d HDMI-0:^2 -f
+super + shift + 3
+    bspc node -d HDMI-0:^3 -f
+super + shift + 4
+    bspc node -d HDMI-0:^4 -f
+super + shift + 5
+    bspc node -d HDMI-0:^5 -f
+
+# --- MONITOR SECUNDÁRIO (DVI-0) ---
+
+# Focar Desktops (Trocar de área)
+super + 6
+    bspc desktop -f DVI-0:^1
+super + 7
+    bspc desktop -f DVI-0:^2
+super + 8
+    bspc desktop -f DVI-0:^3
+super + 9
+    bspc desktop -f DVI-0:^4
+super + 0
+    bspc desktop -f DVI-0:^5
+
+# Mover Janelas (Shift + Número)
+super + shift + 6
+    bspc node -d DVI-0:^1 -f
+super + shift + 7
+    bspc node -d DVI-0:^2 -f
+super + shift + 8
+    bspc node -d DVI-0:^3 -f
+super + shift + 9
+    bspc node -d DVI-0:^4 -f
+super + shift + 0
+    bspc node -d DVI-0:^5 -f
 
 # recarregar BSPWM (como i3 SUPER+Shift+R)
 super + shift + r
