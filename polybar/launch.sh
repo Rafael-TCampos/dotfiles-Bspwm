@@ -1,5 +1,6 @@
-# Barra principal no monitor HDMI-0
-MONITOR=HDMI-0 polybar example &
+#!/bin/bash
 
-# Barra secundária no monitor DVI-0 (vertical)
+killall -q polybar
+
+MONITOR=HDMI-0 polybar example &
 MONITOR=DVI-0 polybar secondary &
