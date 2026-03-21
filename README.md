@@ -40,7 +40,7 @@ Suporte a dual monitor com script automático (`dualMonitor.sh`)
 
 ## 📸 Preview
 
-![BSPWM](screenshots/bspwm1.png)
+![BSPWM](screenshots/Bspwm1.png)
 
 ---
 
