@@ -4,13 +4,12 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "Atualizando sistema..."
 
-sudo pacman -Syu --noconfirm
+sudo xbps-install -Syu
 
 echo "Instalando programas..."
 
-sudo pacman -S --needed --noconfirm \
-  xorg-server \
-  xorg-xinit \
+sudo xbps-install -y \
+  xorg \
   bspwm \
   sxhkd \
   kitty \
