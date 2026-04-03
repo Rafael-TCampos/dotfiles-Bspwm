@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
+# Pega o diretório onde o script está rodando
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-echo "Atualizando sistema..."
+echo "--- Atualizando sistema (Arch Linux) ---"
+sudo pacman -Syu --noconfirm
 
-sudo xbps-install -Syu
-
-echo "Instalando programas..."
-
-sudo xbps-install -y \
-  xorg \
+echo "--- Instalando programas essenciais ---"
+# Adicionei o 'stow' e o 'rofi' que você está usando agora
+sudo pacman -S --needed --noconfirm \
+  xorg-server \
+  xorg-xinit \
+  xorg-xrandr \
   bspwm \
   sxhkd \
   kitty \
@@ -17,37 +19,37 @@ sudo xbps-install -y \
   polybar \
   feh \
   neovim \
+  rofi \
   git \
-  curl
+  curl \
+  stow \
+  base-devel
 
-echo "Criando pastas..."
-
+echo "--- Criando pastas de suporte ---"
 mkdir -p ~/.config
+mkdir -p ~/.local/share/rofi/themes
 
-echo "Removendo configs antigas..."
+echo "--- Organizando Links com GNU Stow ---"
+# O Stow faz o trabalho de remover o antigo e criar o link novo sozinho
+cd "$DIR"
 
-rm -rf ~/.config/bspwm
-rm -rf ~/.config/sxhkd
-rm -rf ~/.config/kitty
-rm -rf ~/.config/picom
-rm -rf ~/.config/polybar
-rm -rf ~/.config/nvim
+# Garante que as pastas de destino existam para o Stow não se perder
+stow bspwm
+stow sxhkd
+stow kitty
+stow picom
+stow polybar
+stow nvim
+stow rofi
 
-echo "Linkando dotfiles..."
+echo "--- Configurando scripts e X ---"
+# Permissão para o seu script de dois monitores
+if [ -f "$DIR/dualMonitor.sh" ]; then
+  chmod +x "$DIR/dualMonitor.sh"
+fi
 
-ln -sf $DIR/bspwm ~/.config/bspwm
-ln -sf $DIR/sxhkd ~/.config/sxhkd
-ln -sf $DIR/kitty ~/.config/kitty
-ln -sf $DIR/picom ~/.config/picom
-ln -sf $DIR/polybar ~/.config/polybar
-ln -sf $DIR/nvim ~/.config/nvim
-
-echo "Configurando monitor script..."
-
-chmod +x $DIR/dualMonitor.sh
-
-echo "Configurando X..."
-
+# Configura o .xinitrc para iniciar o bspwm
 echo "exec bspwm" >~/.xinitrc
 
-echo "Instalação concluída!"
+echo "--- Instalação concluída! ---"
+echo "Dica: Reinicie ou use 'startx' para entrar no bspwm."
