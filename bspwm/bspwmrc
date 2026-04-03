@@ -6,6 +6,7 @@ pgrep -x sxhkd >/dev/null || sxhkd &
 # configurar monitores
 ~/dotfiles/dualMonitor.sh
 sleep 1
+bspc wm -r
 
 # dividir desktops
 bspc monitor HDMI-0 -d 1 2 3 4 5
@@ -35,3 +36,8 @@ picom --config ~/.config/picom/picom.conf &
 
 # polybar
 ~/.config/polybar/launch.sh &
+
+# GARANTIR FOCO FINAL (ESSENCIAL)
+sleep 1
+bspc monitor HDMI-0 -f 1
+bspc monitor DVI-0 -f 6
