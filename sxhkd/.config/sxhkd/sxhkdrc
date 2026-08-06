@@ -1,0 +1,62 @@
+# ────────────────
+# Atalhos gerais (independente do WM)
+# ────────────────
+
+# abrir terminal
+super + Return
+    kitty
+
+# abrir menu Rofi
+super + d
+    rofi -show drun
+
+# recarregar configuração do sxhkd
+super + w
+    pkill -USR1 -x sxhkd
+
+# ────────────────
+# Atalhos BSPWM
+# ────────────────
+
+# fechar janela
+super + q
+    bspc node -c
+
+# mover foco entre janelas
+super + {h,j,k,l}
+   bspc node -f {west,south,north,east}
+
+
+# Focar desktops
+super + {1-9,0}
+    bspc desktop -f '^{1-9,10}'
+
+# Mover janela para o desktop
+super + shift + {1-9,0}
+    bspc node -d '^{1-9,10}' -f
+
+
+# recarregar BSPWM (como i3 SUPER+Shift+R)
+super + shift + r
+    bspc wm -r
+
+# Captura de tela Flameshot
+super + p
+    flameshot gui
+
+# Atalho para Thunar
+super + t
+      thunar
+
+       
+# aumentar volume
+ctrl + Up
+    pamixer -i 5 && notify-send "Volume $(pamixer --get-volume)%"
+
+# diminuir volume
+ctrl + Down
+    pamixer -d 5 && notify-send "Volume $(pamixer --get-volume)%"
+
+# mute
+ctrl + shift + m
+    pamixer -t && notify-send "Mute"

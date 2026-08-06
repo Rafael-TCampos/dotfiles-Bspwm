@@ -1,3 +1,5 @@
+kkk
+
 #################################
 # Backend
 #################################
@@ -27,9 +29,9 @@ fade-out-step = 0.04;
 # Transparency
 #################################
 
-frame-opacity = 0.9;
-inactive-opacity = 0.95;
-active-opacity = 1.0;
+frame-opacity = 0.90;
+inactive-opacity = 0.90;
+active-opacity = 0.90;
 
 #################################
 # Rounded Corners
@@ -67,7 +69,10 @@ rules: (
     blur-background = false;
   },
   {
-    match = "class_g = 'Conky'";
+    match = "class_g = 'kitty'";
     shadow = false;
+    blur-background = true;
   }
 )
+
+6 M6

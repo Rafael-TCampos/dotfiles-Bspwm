@@ -1,12 +1,14 @@
 #! /bin/sh
 
 # 1. Iniciar atalhos (Essencial para o bspwm não "travar")
-pgrep -x sxhkd >/dev/null || sxhkd &
+# Iniciar atalhos
+if ! pgrep -x sxhkd >/dev/null; then
+    sxhkd &
+fi
 
 # 2. Configurar monitores
 # Alterado para o caminho do link criado pelo Stow
 ~/.config/bspwm/dualMonitor.sh
-sleep 1
 
 # 3. Dividir desktops (Workspaces)
 # DICA: Se no Arch o nome mudar (ex: HDMI-A-1), você altera aqui
@@ -14,8 +16,8 @@ bspc monitor HDMI-0 -d 1 2 3 4 5
 bspc monitor DVI-0 -d 6 7 8 9 10
 
 # 4. Configuração visual e Comportamento
-bspc config top_padding 24
-bspc config window_gap 12
+bspc config top_padding 0
+bspc config window_gap 5
 bspc config border_width 2
 
 bspc config split_ratio 0.52
@@ -23,8 +25,8 @@ bspc config borderless_monocle true
 bspc config gapless_monocle true
 
 # Cores (Branco para foco, Cinza para o resto)
-bspc config focused_border_color "#ffffff"
-bspc config normal_border_color "#444444"
+bspc config focused_border_color "#fe8019"
+bspc config normal_border_color "#2d2d2d"
 
 # 5. Programas de Inicialização (Com pgrep para evitar duplicatas)
 pgrep -x picom >/dev/null || picom --config ~/.config/picom/picom.conf &
@@ -36,7 +38,7 @@ pgrep -x picom >/dev/null || picom --config ~/.config/picom/picom.conf &
 ~/.config/polybar/launch.sh &
 
 # 6. Foco Inicial
-sleep 1
+
 bspc monitor HDMI-0 -f 1
 
 bspc rule -a Kitty desktop='^6' follow=on
