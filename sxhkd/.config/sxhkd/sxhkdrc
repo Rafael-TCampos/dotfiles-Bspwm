@@ -8,7 +8,7 @@ super + Return
 
 # abrir menu Rofi
 super + d
-    rofi -show drun
+   rofi -show drun -show-icons -theme ~/dotfiles-Bspwm/rofi/.local/share/rofi/themes/rounded-nord-dark.rasi 
 
 # recarregar configuração do sxhkd
 super + w
