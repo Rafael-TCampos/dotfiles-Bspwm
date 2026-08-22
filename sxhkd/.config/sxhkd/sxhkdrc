@@ -8,7 +8,7 @@ super + Return
 
 # abrir menu Rofi
 super + d
-   rofi -show drun -show-icons -theme ~/dotfiles-Bspwm/rofi/.local/share/rofi/themes/rounded-nord-dark.rasi 
+  rofi -show drun -show-icons -theme ~/dotfiles/rofi/.local/share/rofi/themes/rounded-nord-dark.rasi  
 
 # recarregar configuração do sxhkd
 super + w
@@ -22,33 +22,49 @@ super + w
 super + q
     bspc node -c
 
+
+#######################################
 # mover foco entre janelas
 super + {h,j,k,l}
    bspc node -f {west,south,north,east}
 
 
+#######################################
 # Focar desktops
 super + {1-9,0}
     bspc desktop -f '^{1-9,10}'
 
+
+########################################
 # Mover janela para o desktop
 super + shift + {1-9,0}
     bspc node -d '^{1-9,10}' -f
 
 
+##########################################
 # recarregar BSPWM (como i3 SUPER+Shift+R)
 super + shift + r
     bspc wm -r
 
+
+###########################
 # Captura de tela Flameshot
 super + p
     flameshot gui
 
+
+#####################
 # Atalho para Thunar
 super + t
       thunar
 
-       
+super + b
+    brave-browser
+
+super + i
+   idea       
+
+
 # aumentar volume
 ctrl + Up
     pamixer -i 5 && notify-send "Volume $(pamixer --get-volume)%"
