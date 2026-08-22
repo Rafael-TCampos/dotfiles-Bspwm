@@ -4,7 +4,7 @@
 
 # abrir terminal
 super + Return
-    kitty
+    alacritty
 
 # abrir menu Rofi
 super + d

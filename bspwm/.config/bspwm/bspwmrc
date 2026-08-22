@@ -12,8 +12,8 @@ fi
 
 # 3. Dividir desktops (Workspaces)
 # DICA: Se no Arch o nome mudar (ex: HDMI-A-1), você altera aqui
-bspc monitor HDMI-0 -d 1 2 3 4 5
-bspc monitor DVI-0 -d 6 7 8 9 10
+bspc monitor HDMI-1 -d 1 2 3 4 5
+bspc monitor DVI-D-1 -d 6 7 8 9 10
 
 # 4. Configuração visual e Comportamento
 bspc config top_padding 0
@@ -39,6 +39,4 @@ pgrep -x picom >/dev/null || picom --config ~/.config/picom/picom.conf &
 
 # 6. Foco Inicial
 
-bspc monitor HDMI-0 -f 1
-
-bspc rule -a Kitty desktop='^6' follow=on
+bspc monitor HDMI-1 -f 1
