@@ -40,11 +40,10 @@ if [ "$DISTRO" = "arch" ]; then
         xorg-xrandr \
         bspwm \
         sxhkd \
-        kitty \
+        alacritty \
         picom \
         polybar \
         feh \
-        neovim \
         rofi \
         git \
         curl \
@@ -62,11 +61,10 @@ elif [ "$DISTRO" = "ubuntu" ]; then
     sudo apt install -y \
         bspwm \
         sxhkd \
-        kitty \
+        alacritty \
         picom \
         polybar \
         feh \
-        neovim \
         rofi \
         git \
         curl \
@@ -84,7 +82,7 @@ echo "Criando backup das configurações..."
 
 mkdir -p ~/.config-backup
 
-for dir in bspwm sxhkd kitty picom polybar nvim rofi
+for dir in bspwm sxhkd picom polybar rofi
 do
     if [ -e "$HOME/.config/$dir" ]; then
         mv "$HOME/.config/$dir" "$HOME/.config-backup/$dir"
@@ -118,11 +116,10 @@ cd "$DIR"
 
 stow bspwm
 stow sxhkd
-stow kitty
 stow picom
 stow polybar
-stow nvim
 stow rofi
+stow alacritty
 
 #########################################
 # Scripts
