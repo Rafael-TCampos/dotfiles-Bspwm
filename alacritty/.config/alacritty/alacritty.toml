@@ -1,0 +1,23 @@
+[window]
+opacity = 0.85
+blur = true
+padding = { x = 10, y = 8 }
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "Cascadia Code NF"
+
+[font.bold]
+family = "Cascadia Code NF"
+
+[font.italic]
+family = "Cascadia Code NF"
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 750   
+
+[terminal]
+shell = "/usr/bin/zsh"
