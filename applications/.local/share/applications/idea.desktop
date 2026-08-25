@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IntelliJ IDEA
+Comment=Java IDE
+Exec=/usr/local/bin/idea
+Icon=/opt/idea/idea-IU-262.9437.185/bin/idea.svg
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupWMClass=jetbrains-idea

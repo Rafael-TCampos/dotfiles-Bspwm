@@ -41,6 +41,19 @@ super + shift + {1-9,0}
     bspc node -d '^{1-9,10}' -f
 
 
+
+##########################################
+# Mover janela entre monitores
+
+# Monitor 1 → Monitor 2
+super + shift + Prior
+    bspc node -m DVI-D-0
+
+# Monitor 2 → Monitor 1
+super + shift + Next
+    bspc node -m HDMI-A-0
+
+
 ##########################################
 # recarregar BSPWM (como i3 SUPER+Shift+R)
 super + shift + r
