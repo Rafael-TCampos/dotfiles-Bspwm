@@ -44,13 +44,6 @@ Suporte a dual monitor com script automático (`dualMonitor.sh`)
 
 ---
 
-## ⚠️ Observações
-
-* Feito para Arch Linux
-* Pode precisar ajustar nomes de monitores (`xrandr`)
-
----
-
 ## 📦 Estrutura
 
 ```text
