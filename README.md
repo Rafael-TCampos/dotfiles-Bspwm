@@ -43,6 +43,12 @@ Suporte a dual monitor com script automático (`dualMonitor.sh`)
 
 ---
 
+🔒 Lockscreen
+- i3lock
+- xss-lock
+- bloqueio após 10 minutos
+- wallpaper independente para os dois monitores
+
 ## 📦 Estrutura
 
 ```text
