@@ -1,4 +1,4 @@
-# 🧩 Meu Setup BSPWM (Arch Linux)
+# 🧩 Meu Setup BSPWM 
 
 Configuração completa do meu ambiente Linux usando **bspwm**, **sxhkd** e **polybar**, com suporte a múltiplos monitores.
 
