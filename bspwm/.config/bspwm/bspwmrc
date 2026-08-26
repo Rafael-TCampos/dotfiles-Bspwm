@@ -32,8 +32,7 @@ pgrep -x picom >/dev/null || picom --config ~/.config/picom/picom.conf &
 
 # Bloqueio automático após 10 minutos de inatividade
 xset s 600
-pgrep -x xss-lock >/dev/null || xss-lock -- i3lock -i "$HOME/dotfiles/lockscreen/dual-lockscreen.png" &
-
+pgrep -x xss-lock >/dev/null || xss-lock -- i3lock -i "$HOME/.local/share/lockscreen/dual-lockscreen.png" &
 
 # Wallpaper
 sleep 1

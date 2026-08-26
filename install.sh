@@ -2,14 +2,20 @@
 
 set -e
 
+#########################################
 # Diretório do repositório
+#########################################
+
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "======================================"
 echo "  Instalador dos Dotfiles - Rafael"
 echo "======================================"
 
-# Detecta a distribuição
+#########################################
+# Detectar distribuição
+#########################################
+
 if command -v pacman >/dev/null 2>&1; then
     DISTRO="arch"
 elif command -v apt >/dev/null 2>&1; then
@@ -23,17 +29,19 @@ echo
 echo "Sistema detectado: $DISTRO"
 
 #########################################
-# Atualização e instalação dos pacotes
+# Instalar pacotes
 #########################################
 
 if [ "$DISTRO" = "arch" ]; then
 
     echo
     echo "Atualizando Arch Linux..."
+
     sudo pacman -Syu --noconfirm
 
     echo
     echo "Instalando pacotes..."
+
     sudo pacman -S --needed --noconfirm \
         xorg-server \
         xorg-xinit \
@@ -48,16 +56,22 @@ if [ "$DISTRO" = "arch" ]; then
         git \
         curl \
         stow \
-        base-devel
+        base-devel \
+        i3lock \
+        xss-lock \
+        imagemagick \
+        zsh
 
 elif [ "$DISTRO" = "ubuntu" ]; then
 
     echo
     echo "Atualizando Ubuntu..."
+
     sudo apt update
 
     echo
     echo "Instalando pacotes..."
+
     sudo apt install -y \
         bspwm \
         sxhkd \
@@ -69,44 +83,87 @@ elif [ "$DISTRO" = "ubuntu" ]; then
         git \
         curl \
         stow \
-        xorg
+        xorg \
+        i3lock \
+        xss-lock \
+        imagemagick \
+        zsh
 
 fi
 
 #########################################
-# Backup das configurações antigas
+# Criar diretório de backup
 #########################################
 
 echo
-echo "Criando backup das configurações..."
+echo "Criando diretório de backup..."
 
-mkdir -p ~/.config-backup
+mkdir -p "$HOME/.config-backup"
 
-for dir in bspwm sxhkd picom polybar rofi
+#########################################
+# Backup das configurações existentes
+#########################################
+
+echo
+echo "Criando backup das configurações antigas..."
+
+for dir in bspwm sxhkd picom polybar rofi alacritty
 do
     if [ -e "$HOME/.config/$dir" ]; then
-        mv "$HOME/.config/$dir" "$HOME/.config-backup/$dir"
+
+        BACKUP="$HOME/.config-backup/${dir}.$(date +%Y%m%d_%H%M%S)"
+
+        echo "Backup: ~/.config/$dir -> $BACKUP"
+
+        mv "$HOME/.config/$dir" "$BACKUP"
+
     fi
 done
 
 #########################################
-# Criando diretórios
+# Backup do .zshrc
 #########################################
 
-mkdir -p ~/.config
-mkdir -p ~/.local/share/rofi/themes
+if [ -e "$HOME/.zshrc" ]; then
 
-#########################################
-# Verificando GNU Stow
-#########################################
+    BACKUP="$HOME/.config-backup/zshrc.$(date +%Y%m%d_%H%M%S)"
 
-if ! command -v stow >/dev/null 2>&1; then
-    echo "GNU Stow não encontrado."
-    exit 1
+    echo "Backup: ~/.zshrc -> $BACKUP"
+
+    mv "$HOME/.zshrc" "$BACKUP"
+
 fi
 
 #########################################
-# Instalando dotfiles
+# Criar diretórios necessários
+#########################################
+
+mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.local/share"
+
+#########################################
+# Verificar GNU Stow
+#########################################
+
+if ! command -v stow >/dev/null 2>&1; then
+
+    echo
+    echo "Erro: GNU Stow não encontrado."
+    exit 1
+
+fi
+
+#########################################
+# Tornar scripts executáveis
+#########################################
+
+echo
+echo "Configurando permissões dos scripts..."
+
+chmod +x "$DIR/bspwm/.config/bspwm/dualMonitor.sh"
+
+#########################################
+# Instalar dotfiles com GNU Stow
 #########################################
 
 echo
@@ -120,26 +177,39 @@ stow picom
 stow polybar
 stow rofi
 stow alacritty
-
-#########################################
-# Scripts
-#########################################
-
-if [ -f "$DIR/dualMonitor.sh" ]; then
-    chmod +x "$DIR/dualMonitor.sh"
-fi
+stow zsh
+stow lockscreen
 
 #########################################
 # Xinit
 #########################################
 
-echo "exec bspwm" > ~/.xinitrc
+echo
+echo "Configurando .xinitrc..."
 
+echo "exec bspwm" > "$HOME/.xinitrc"
+
+#########################################
+# Finalização
 #########################################
 
 echo
 echo "======================================"
 echo " Instalação concluída com sucesso!"
 echo "======================================"
+
 echo
-echo "Escolha a sessão BSPWM na tela de login."
+echo "Configurações instaladas:"
+echo "  - BSPWM"
+echo "  - SXHKD"
+echo "  - Picom"
+echo "  - Polybar"
+echo "  - Rofi"
+echo "  - Alacritty"
+echo "  - Zsh"
+echo "  - Lockscreen"
+echo
+echo "O backup das configurações antigas está em:"
+echo "  $HOME/.config-backup"
+echo
+echo "Reinicie a sessão para aplicar todas as configurações."
