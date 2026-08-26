@@ -27,7 +27,7 @@ startx
 * Atalhos: sxhkd
 * Barra: polybar (multi-monitor)
 * Compositor: picom
-* Terminal: kitty
+* Terminal: alacritty
 * Editor: neovim
 
 ---
