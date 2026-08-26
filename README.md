@@ -28,7 +28,6 @@ startx
 * Barra: polybar (multi-monitor)
 * Compositor: picom
 * Terminal: alacritty
-* Editor: neovim
 
 ---
 
