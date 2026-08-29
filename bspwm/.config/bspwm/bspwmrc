@@ -12,7 +12,7 @@ fi
 
 # 3. Dividir desktops (Workspaces)
 # DICA: Se no Arch o nome mudar (ex: HDMI-A-1), você altera aquibspc monitor HDMI-A-0 -d 1 2 3 4 5
-bspc monitor HDMI-A-0 -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor HDMI-A-0 -d 1 2 3 4 5 
 
 # 4. Configuração visual e Comportamento
 bspc config top_padding 0
