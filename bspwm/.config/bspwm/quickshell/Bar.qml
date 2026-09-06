@@ -86,7 +86,6 @@ PanelWindow {
             spacing: 4
 
             Media {}
-            Weather {}
             Metrics {}
             Volume {}
             Updates {}
