@@ -39,7 +39,11 @@ sleep 1
 [ -f ~/.fehbg ] && sh ~/.fehbg &
 
 # Polybar
-~/.config/polybar/launch.sh &
+#~/.config/polybar/launch.sh &
+
+
+# QuickShell
+qs -p ~/.config/bspwm/quickshell &
 
 # 6. Foco Inicial
 
